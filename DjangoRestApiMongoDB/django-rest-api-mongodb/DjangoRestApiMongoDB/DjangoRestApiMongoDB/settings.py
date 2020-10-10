@@ -18,10 +18,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
+import environ
+
+env = environ.Env()
+# reading .env file
+environ.Env.read_env()
+
+# Raises django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'hux_-pn)wak^o_-n#g=-b$_m9zi+cak68gz+ba!0e)ijbijp8w'
-
+SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -87,7 +94,7 @@ WSGI_APPLICATION = 'DjangoRestApiMongoDB.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'bezkoder_db',
+        'NAME': 'test1',
         'HOST': '127.0.0.1',
         'PORT': 27017,
     }
